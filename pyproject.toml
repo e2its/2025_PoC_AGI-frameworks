@@ -1,31 +1,29 @@
 [project]
-name = "wecookio"
+name = "AGI-Frameworks-PoC"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "agno>=1.7.9",
-    "aiohttp>=3.12.14",
-    "boto3>=1.38.44",
-    "boto3-stubs>=1.38.39",
-    "botocore>=1.38.44",
-    "crewai>=0.148.0",
-    "crewai-tools>=0.0.1",
-    "duckduckgo-search>=8.1.1",
-    "ipykernel>=6.29.5",
-    "ipywidgets>=8.1.7",
-    "opentelemetry-api>=1.35.0",
-    "opentelemetry-sdk>=1.35.0",
-    "prompt-template>=1.2.0",
-    "python-dotenv>=1.1.1",
-    "pyyaml>=6.0.2",
-    "requests>=2.32.4",
-    "sqlalchemy>=2.0.43",
-    "sseclient>=0.0.27",
-    "strands-agents>=1.2.0",
-    "strands-agents-tools>=0.2.0",
-    "typing-extensions>=4.14.0",
+    "agno==1.7.9",
+    "boto3==1.38.44",
+    "boto3-stubs==1.38.39",
+    "botocore==1.38.44",
+    "crewai==0.148.0",
+    "crewai-tools==0.0.1",
+    "duckduckgo-search==8.1.1",
+    "ipykernel==6.29.5",
+    "ipywidgets==8.1.7",
+    "opentelemetry-api==1.35.0",
+    "opentelemetry-sdk==1.35.0",
+    "prompt-template==1.2.0",
+    "python-dotenv==1.1.1",
+    "pyyaml==6.0.2",
+    "requests==2.32.4",
+    "sqlalchemy>=2.0.45",
+    "strands-agents==1.2.0",
+    "strands-agents-tools==0.2.0",
+    "typing-extensions==4.14.0",
 ]
 
 [dependency-groups]

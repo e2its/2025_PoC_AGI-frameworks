@@ -1,8 +1,8 @@
-# WeCookio Research Documentation
+# 2025_PoC_AGI-frameworks (JULY.2025)
 
 ## Overview
 
-The `researches/` folder contains comprehensive research and proof-of-concept implementations for WeCookio's multi-agent system using different frameworks and approaches. This research explores various strategies for recipe adaptation with dietary restrictions while maximizing culinary experience, with a focus on advanced orchestration techniques including graph-based swarm structures.
+This repository contains proof-of-concept implementations and research for multi-agent AGI frameworks, focusing on advanced orchestration, workflow management, and agent collaboration. The project explores various strategies for agent coordination, workflow execution, and optimization using CrewAI and Strands frameworks.
 
 ## Research Objectives
 
@@ -25,30 +25,51 @@ The `researches/` folder contains comprehensive research and proof-of-concept im
 ## Directory Structure
 
 ```
-researches/
-├── README.md                           # This documentation
-├── bck/                                # Backup configurations
-├── crew/                               # CrewAI implementations
+2025_PoC_AGI-frameworks/
+├── agno/
 │   └── latest/
 │       └── config/
-│           ├── agent-hierarchical/     # Hierarchical agent approach
-│           ├── agent-sequencial/       # Sequential agent approach
-│           └── vacuum_config/          # Configuration templates
-├── strands/                            # Strands implementations
+│           ├── agents-sequential.yaml
+│           ├── agents-teams.yaml
+│           ├── config.yaml
+│           ├── integration_config.yaml
+│           ├── tasks-sequential.yaml
+│           ├── tasks-teams.yaml
+│           └── vacuum_config/
+├── crew/
 │   └── latest/
 │       └── config/
-│           ├── agents-sequential.yaml  # Sequential agent definitions
-│           ├── agents-swarm.yaml       # Swarm agent definitions
-│           ├── tasks-sequential.yaml   # Sequential task definitions
-│           ├── tasks-swarm.yaml        # Swarm task definitions
-│           ├── config.yaml             # Main configuration
-│           ├── integration_config.yaml # AWS integration settings
-│           └── vacuum_config/          # Configuration templates
-├── crew-agent-sequential.ipynb         # CrewAI sequential PoC
-├── crew-agent-hieralquical.ipynb       # CrewAI hierarchical PoC
-├── strands-agent-sequential.ipynb      # Strands sequential PoC
-├── strands-multi-agent-swam.ipynb      # Strands swarm PoC
-└── strands-multi-agent-hierarchical.ipynb # Strands graph-based swarm PoC
+│           ├── agent-coordinate/
+│           │   ├── agents.yaml
+│           │   ├── crew_config.yaml
+│           │   ├── integration_config.yaml
+│           │   └── tasks.yaml
+│           ├── agent-sequential/
+│           │   ├── agents.yaml
+│           │   ├── crew_config.yaml
+│           │   ├── integration_config.yaml
+│           │   └── tasks.yaml
+│           └── vacuum_config/
+├── strands/
+│   └── latest/
+│       └── config/
+│           ├── agents-sequential.yaml
+│           ├── agents-swarm.yaml
+│           ├── config.yaml
+│           ├── integration_config.yaml
+│           ├── tasks-sequential.yaml
+│           ├── tasks-swarm.yaml
+│           └── vacuum_config/
+├── agno-agent-collaborate.ipynb
+├── agno-agent-coordinate.ipynb
+├── agno-agent-secuential.ipynb
+├── agno-agent-workflow.ipynb
+├── crew-agent-coordinate.ipynb
+├── crew-agent-sequential.ipynb
+├── strands-agent-sequential.ipynb
+├── strands-multi-agent-collaborate.ipynb
+├── strands-multi-agent-graph.ipynb
+└── ...
 ```
 
 ## Agent Specializations
@@ -352,30 +373,6 @@ logging.basicConfig(
 )
 ```
 
-## Future Research Directions
-
-1. **Advanced Orchestration**: Explore more sophisticated workflow patterns
-2. **Graph-Based Workflow Optimization**: Enhance DAG-based execution strategies
-3. **Dynamic Model Selection**: Implement real-time model switching
-4. **Multi-Modal Integration**: Add image and video processing
-5. **User Feedback Integration**: Implement learning from user preferences
-6. **Cross-Cultural Adaptation**: Enhance cultural sensitivity in recipes
-7. **Parallel Execution**: Support for true parallel agent execution
-8. **Workflow Caching**: Optimize repeated workflow patterns
-9. **Real-time Workflow Modification**: Dynamic workflow adaptation based on results
-
-## Contributing
-
-When adding new research:
-
-1. Create a new notebook with clear naming convention
-2. Update this README with new findings
-3. Document configuration changes
-4. Add performance metrics
-5. Include usage examples
-6. Document workflow structures and routing logic
-7. Add comprehensive testing for new features
-8. Ensure backward compatibility where possible
 
 ## Research Status
 
@@ -386,20 +383,6 @@ When adding new research:
 - **Strands Sequential**: Agent-to-agent handoffs
 - **Strands Basic Swarm**: Collaborative multi-agent execution
 - **Strands Graph-Based Swarm**: Advanced DAG workflow orchestration
-
-### In Progress 🔄
-
-- **Performance Optimization**: Enhanced monitoring and metrics
-- **Workflow Templates**: Reusable workflow patterns
-- **Integration Testing**: Cross-framework compatibility
-
-### Planned 📋
-
-- **Parallel Execution**: True parallel agent execution
-- **ML-Based Routing**: Intelligent workflow decisions
-- **Workflow Caching**: Performance optimization
-- **Real-time Adaptation**: Dynamic workflow modification
-
-## License
-
-This research is part of the WeCookio project. See the main project LICENSE file for details. 
+- **AGNO Sequential**: AGNO agent sequential workflow experiments
+- **AGNO Team/Collaborative**: AGNO multi-agent team and collaboration experiments
+- **AGNO Workflow**: AGNO workflow orchestration and coordination experiments
