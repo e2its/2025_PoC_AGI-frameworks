@@ -1,0 +1,23 @@
+# WeCookio CrewAI Tasks Configuration - Optimized for Amazon Nova
+# Unified tasks file with streamlined prompts
+
+"Enhance Recipe":
+  name: "Enhance Recipe"
+  description: |
+    Enhance the recipe with the following details:
+    ## RECIPE CONTEXT
+    - **Recipe Name**: ${food_name}
+    - **Servings**: ${servings}
+    - **Dietary Restrictions**: ${intolerances}, ${exclusions}
+    - **Preferences**: ${preferences}
+    - **Target Country**: ${country}
+    - **Output Language**: ${output_language}
+
+    ## TASK OBJECTIVE
+    Transform the requested recipe to be 100% compliant with dietary restrictions and adapted to preferences 
+    while maximizing culinary experience and preserving authentic flavor/texture characteristics and provide the expected output indicated bellow.
+
+    **Expected output:**
+    - Normalize the recipe and instructions to the target ${country}
+    - Return the recipe and instructions in the target ${country} format and language ${output_language}
+    - Validation status for Quality checks

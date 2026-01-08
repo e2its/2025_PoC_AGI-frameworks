@@ -1,0 +1,149 @@
+# Integration with weCookio architecture - Cost Optimized with Amazon Nova
+# Model selection based on task complexity for maximum cost efficiency
+
+aws_bedrock:
+  # Low-complexity models (for simple tasks) - Amazon Nova Micro
+  low_complexity_model:
+    model_id: "bedrock/amazon.nova-lite-v1:0"
+    model_kwargs: 
+      max_tokens: 2000
+      temperature: 0.4
+      top_p: 0.9
+      max_iterations: 3
+      max_retry_limit: 2
+      max_execution_time: 60 # seconds
+    capabilities: 
+      cost_per_1k_tokens_input: 0.00006  # $0.06 per 1M tokens
+      cost_per_1k_tokens_output: 0.00024  # $0.24 per 1M tokens
+      context_length: 300000  # 300K tokens context
+      supports_agents: true
+      supports_chat: true
+      supports_conversation: true
+      supports_math: true
+      supports_multilingual: true
+      supports_question_answering: true
+      supports_rag: true
+      supports_text_generation: true
+      supports_text_summarization: true
+      supports_translation: true
+      supports_text: true
+      supports_image: true
+      supports_video_to_text: true
+  
+  # Ultra-low complexity models (for basic validations) - Amazon Nova Micro
+  ultra_low_complexity_model:
+    model_id: "bedrock/amazon.nova-micro-v1:0"
+    model_kwargs: 
+      max_tokens: 1000
+      temperature: 0.2
+      top_p: 0.9
+      max_iterations: 3
+      max_retry_limit: 2
+      max_execution_time: 60 # seconds
+    capabilities: 
+      cost_per_1k_tokens_input: 0.000035  # $0.035 per 1M tokens
+      cost_per_1k_tokens_output: 0.00014  # $0.14 per 1M tokens
+      context_length: 128000  # 128K tokens context 
+      supports_agents: true
+      supports_chat: true
+      supports_conversation: true
+      supports_math: true
+      supports_multilingual: true
+      supports_question_answering: true
+      supports_rag: true
+      supports_text_generation: true
+      supports_text_summarization: true
+      supports_translation: true
+      supports_text: true
+
+  
+  # Medium-complexity models (for validation and QA) - Multimodal tasks (for image/video analysis) - Amazon Nova Lite
+  medium_complexity_model:
+    model_id: "bedrock/amazon.nova-pro-v1:0"
+    model_kwargs: 
+      max_tokens: 4000
+      temperature: 0.6
+      top_p: 0.9
+      max_iterations: 3
+      max_retry_limit: 2
+      max_execution_time: 120 # seconds
+    capabilities:
+      cost_per_1k_tokens_input: 0.0008  # $0.80 per 1M tokens
+      cost_per_1k_tokens_output: 0.0032  # $3.20 per 1M tokens
+      context_length: 300000  # 300K tokens context
+      supports_agents: true
+      supports_chat: true
+      supports_code_generation: true
+      supports_complex_reasoning: true
+      supports_conversation: true
+      supports_math: true
+      supports_multilingual: true
+      supports_question_answering: true
+      supports_rag: true
+      supports_text_generation: true
+      supports_text_summarization: true
+      supports_translation: true
+      supports_text: true
+      supports_image: true
+      supports_video_to_text: true
+        
+  # High-complexity models (for coordination and innovation) - Advanced multimodal tasks (for complex analysis) - Amazon Nova Pro
+  high_complexity_model:
+    model_id: "bedrock/amazon.nova-premier-v1:0"
+    model_kwargs: 
+      max_tokens: 4000
+      temperature: 0.6
+      top_p: 0.9
+      max_iterations: 3
+      max_retry_limit: 2
+      max_execution_time: 120 # seconds
+    capabilities: 
+      cost_per_1k_tokens_input:  0.0025 # $2.50 per 1M tokens
+      cost_per_1k_tokens_output: 0.0125 # $12.50 per 1M tokens
+      context_length: 1000000  # 1000K tokens context
+      supports_images: true
+      supports_video: true
+      supports_function_calling: true
+      supports_rag: true
+      supports_agents: true
+      supports_chat: true
+      supports_code_generation: true
+      supports_complex_reasoning: true
+      supports_conversation: true
+      supports_math: true
+      supports_multilingual: true
+      supports_question_answering: true
+      supports_rag: true
+      supports_text_generation: true
+      supports_text_summarization: true
+      supports_translation: true
+      supports_text: true
+      supports_image: true
+      supports_video_to_text: true
+
+
+  error_handling:
+    retry_on_failure: true
+    fallback_to_single_agent: true
+    quality_degradation_threshold: 0.8
+
+  model_selection_criteria:
+    - "Task complexity and reasoning requirements"
+    - "Output quality requirements"
+    - "Cost per token"
+    - "Response time requirements"
+    - "Multimodal requirements"
+    
+# Minimal database integration - only for storage
+database:
+#  neptune: true  # For recipe relationships and graph analysis
+#  dsql: true     # For recipe storage and retrieval
+  
+api_endpoints:
+#  - "/recipes/adapt"
+#  - "/recipes/validate"
+#  - "/recipes/enhance"
+#  - "/recipes/quality-check"
+#  - "/recipes/analyze-image"
+#  - "/recipes/process-video"
+  

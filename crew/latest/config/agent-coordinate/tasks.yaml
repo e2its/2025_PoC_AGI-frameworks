@@ -1,0 +1,68 @@
+# WeCookio CrewAI Tasks Configuration - Optimized for Amazon Nova
+# Unified tasks file with streamlined prompts
+
+"Enhance Recipe":
+  name: "Enhance Recipe"
+  description: |
+    You are a culinary expert tasked with enhancing and adapting recipes for dietary compliance while maintaining authentic flavors and textures.
+
+    ## TASK OBJECTIVE
+    Transform the {{food_name}} recipe to be 100% compliant with dietary restrictions while maximizing culinary experience and preserving authentic flavor/texture characteristics.
+
+    ## CRITICAL REQUIREMENTS
+    1. **DIETARY COMPLIANCE**: Zero tolerance for dietary restriction violations - this is your highest priority
+    2. **CULINARY EXCELLENCE**: Maximize taste, texture, and overall dining experience
+    3. **AUTHENTICITY**: Maintain the original recipe's cultural and flavor profile
+    4. **LANGUAGE**: Provide ALL output exclusively in {{output_language}} - no mixed languages permitted
+
+    ## RECIPE CONTEXT
+    - **Recipe Name**: {{food_name}}
+    - **Servings**: {{servings}}
+    - **Dietary Restrictions**: {{intolerances}}, {{exclusions}}
+    - **Preferences**: {{preferences}}
+    - **Target Country**: {{country}}
+    - **Output Language**: {{output_language}}
+
+    ## MEASUREMENT ADAPTATION RULES
+    - **Metric System** (most countries): grams, milliliters, Celsius
+    - **Imperial System** (US): ounces, cups, Fahrenheit
+    - Adapt all measurements to {{country}} standards
+    - Ensure temperature and weight measurements are country-appropriate
+
+    ## REQUIRED OUTPUT FORMAT
+    Provide the enhanced recipe in the following structured format (ALL in {{output_language}}):
+
+    ### Recipe Title
+    [Enhanced {{food_name}} - {{servings}} servings]
+
+    ### Dietary Compliance Summary
+    - **Original Restrictions**: [List original dietary restrictions]
+    - **Adaptations Made**: [Detail all changes for compliance]
+    - **Compliance Status**: [Confirm 100% compliance]
+
+    ### Ingredients
+    [List all ingredients with precise measurements in {{country}} units]
+
+    ### Instructions
+    [Step-by-step cooking instructions in {{output_language}}]
+
+    ### Key Modifications
+    [Explain specific changes made to ensure dietary compliance]
+
+    ### Nutritional Notes
+    [Brief nutritional information relevant to dietary restrictions]
+
+    ### Tips for Best Results
+    [Culinary tips to maximize flavor and texture]
+
+    ## QUALITY STANDARDS
+    - Ensure all measurements are precise and appropriate for {{country}}
+    - Maintain cooking techniques that preserve authentic flavors
+    - Provide clear, actionable instructions
+    - Include relevant cooking tips and substitutions
+    - Verify all ingredients meet dietary requirements
+
+  agent: "culinary_coordinator_agent"
+  expected_output: |
+    Complete enhanced recipe for {{food_name}} ({{servings}} servings) that is 100% compliant with dietary restrictions, 
+    including structured sections for ingredients, instructions, modifications, and compliance verification - all in {{output_language}}.

@@ -1,0 +1,206 @@
+# WeCookio CrewAI Tasks Configuration - Optimized for Amazon Nova
+# Unified tasks file with streamlined prompts
+
+"Initial Recipe Analysis":
+  name: "Initial Recipe Analysis"
+  description: |
+    **OBJECTIVE**: Create a plan to analyze and replace diatary restrictions in the original recipe and user requirements to ensure 100% dietary compliance while maximizing culinary experience and maintaining authentic flavor/texture similarity.
+    
+    **CRITICAL**: Zero tolerance for dietary restriction violations - this is your top priority.
+    **CRITICAL**: Maximize culinary experience and maintain flavor/texture similarity to original.
+    
+    **Recipe Context**:
+    - Recipe: {{food_name}}
+    - Servings: {{servings}}
+    - Dietary Restrictions: {{intolerances}}, {{exclusions}}
+    - Preferences: {{preferences}}
+    - Country: {{country}}
+    - Output Language: {{output_language}}
+    
+    **CRITICAL LANGUAGE RULE**: Provide ALL output in {{output_language}} language only. No mixed languages allowed.
+        
+  agent: "culinary_coordinator_agent"
+  expected_output: | 
+    Detailed and crystal clear enhanced recipe for {{food_name}} for {{servings}} servings compatible with dietary restrictions exposed in 
+    {{intolerances}}, {{exclusions}} and {{preferences}} with maximum culinary experience, authentic flavor/texture similarity, {{country}} measurements, and detailed rationale in {{output_language}} language.
+
+"Dietary Compliance Validation":
+  name: "Dietary Compliance Validation"
+  description: |
+    **OBJECTIVE**: Validate all ingredients against dietary restrictions ensuring 100% compliance while maintaining culinary excellence. 
+    This rule include substitutions.
+
+    
+    **CRITICAL**: Zero tolerance for dietary restriction violations - this is your top priority.
+    
+    **CRITICAL LANGUAGE RULE**: Provide ALL output in {{output_language}} language only. No mixed languages allowed.
+
+    Validate all ingredients against dietary restrictions using LLM knowledge:
+    - Check each ingredient for allergen content using your knowledge
+    - Verify compliance with direct and indirect intolerances and exclusions
+    - Ensure alignment with dietary preferences
+    - Identify any hidden allergens against {{intolerances}} or cross-contamination risks
+    - **CRITICAL**: NEVER use generic ingredients substitution like "harina sin gluten", "leche sin lactosa", "queso vegano"
+    - **CRITICAL**: ALWAYS specify exact ingredients (e.g., "harina de garbanzos", "leche de almendras", "queso de anacardos")
+    - **CRITICAL**: AVOID generic terms that may contain rice, corn, soy, or other common allergens
+    
+    Use your nutritional expertise to provide comprehensive compliance validation.
+    
+    **Dietary Compliance Validation Report**
+    
+    **Ingredient Analysis (Using LLM Knowledge)**:
+    | Ingredient | Allergen Check | Compliance Status | Risk Level | Recommendations |
+    |------------|----------------|-------------------|------------|-----------------|
+    | [Ingredient] | [Check Result] | [Compliant/Non-Compliant] | [Low/Medium/High] | [Actions Needed] |
+    
+    **Hidden Allergens Identified (Using Knowledge)**:
+    - [List of hidden allergens with sources and rationale] based on {{intolerances}}
+    
+    **Nutritional Analysis**:
+    - [Nutritional adequacy assessment using dietary science knowledge]
+    - [Balance evaluation and recommendations]
+    
+    **Overall Compliance Status**: [Compliant/Non-Compliant with detailed justification]
+    Answer need to be provided in {{output_language}} language.
+  agent: "dietary_compliance_specialist_agent"
+  expected_output: "Compliance validation report with flagged ingredients and safety measures using LLM knowledge"
+  context: [initial_recipe_analysis_task]
+
+"Ingredient Substitution Strategy":
+  name: "Ingredient Substitution Strategy"
+  description: |
+    **OBJECTIVE**: Develop optimal substitution strategy based on the initial recipe analysis for problematic ingredients ensuring maximum flavor and texture similarity while maintaining dietary compliance.
+    
+    **CRITICAL**: All substitutions must comply with dietary restrictions - ZERO EXCEPTIONS.
+    **CRITICAL**: Maximize flavor and texture similarity to original ingredients.
+    
+    **CRITICAL LANGUAGE RULE**: Provide ALL output in {{output_language}} language only. No mixed languages allowed.
+    
+    **METRIC UNIT ADAPTATION:**
+    - Adapt all measurements to {{country}} standards
+    - Use metric system for most countries (grams, milliliters, Celsius)
+    - Use imperial system for US (ounces, cups, Fahrenheit)
+    - Ensure temperature and weight measurements are country-appropriate
+    
+    **CORRECT SUBSTITUTION EXAMPLES:**
+    
+    **Example 1: Flour Substitution**
+    ❌ WRONG: "Process cauliflower in food processor to make flour"
+    ❌ WRONG: "Use gluten-free flour" (generic, may contain rice/corn)
+    ✅ CORRECT: "Use chickpea flour" (similar texture and flavor to wheat flour, available in stores)
+    
+    **Example 2: Milk Substitution**
+    ❌ WRONG: "Make homemade almond milk from scratch with blender"
+    ❌ WRONG: "Use dairy-free milk" (generic, may contain soy/nuts)
+    ✅ CORRECT: "Use almond milk" (similar creaminess to cow milk) OR "Use oat milk" (similar texture and mild flavor)
+    
+    **Example 3: Pasta Substitution**
+    ❌ WRONG: "Make pasta from scratch using flour and pasta machine"
+    ❌ WRONG: "Use gluten-free pasta" (generic, may contain rice/corn)
+    ✅ CORRECT: "Use chickpea pasta" (similar texture and cooking behavior to wheat pasta)
+    
+    **Example 4: Bread Substitution**
+    ❌ WRONG: "Make bread from scratch with yeast and long rising time"
+    ❌ WRONG: "Use gluten-free bread" (generic, may contain rice/corn/soy)
+    ✅ CORRECT: "Use almond flour bread" (similar texture and flavor) OR "Use coconut flour bread" (similar structure)
+    
+    
+    **Substitution Options **:
+    | Original | Substitute | Flavor Match | Texture Match | Availability | Cost Impact |
+    |----------|------------|--------------|---------------|--------------|-------------|
+    | [Ingredient] | [Substitute] | [%] | [%] | [Rating] | [Impact] |
+    
+    **Recommended Approach**: [Detailed strategy with rationale using culinary expertise]
+    **Quality Assurance**: [Validation measures using food science knowledge]
+    **Experience Enhancement**: [Improvements over original using cooking expertise]
+    
+   
+    **Flavor Profile Analysis**:
+    - [Detailed flavor compatibility assessment]
+    - [Texture and mouthfeel considerations]
+    - [Cooking behavior predictions]
+
+  agent: "ingredient_substitution_expert_agent"
+  expected_output: "1-option per ingredient to replace with a similar one for dietary restrictions, and the reason why it was chosen"
+  context: [ initial_recipe_analysis_task]
+
+"Culinary Experience Enhancement":
+  name: "Culinary Experience Enhancement"
+  description: |
+    **OBJECTIVE**: Optimize the adapted recipe for maximum culinary excellence while maintaining authentic flavor profiles and texture similarity.
+    
+    **CRITICAL**: All enhancements must comply with dietary restrictions - ZERO EXCEPTIONS.
+    **CRITICAL**: Maximize culinary experience and maintain authentic flavor profiles.
+    
+    **METRIC UNIT ADAPTATION:**
+    - Adapt all measurements to {{country}} standards
+    - Use metric system for most countries (grams, milliliters, Celsius)
+    - Use imperial system for US (ounces, cups, Fahrenheit)
+    - Ensure temperature and weight measurements are country-appropriate
+    
+    Optimize the adapted recipe for maximum culinary excellence.
+    
+    Use your gastronomic enhancement expertise to provide optimized recipe.
+
+    Answer need to be provided in {{output_language}} language.
+  agent: "culinary_experience_optimizer_agent"
+  expected_output: "Enhanced recipe with optimized techniques, flavors, and presentation using LLM knowledge"
+  context: [ingredient_substitution_strategy_task, initial_recipe_analysis_task]
+
+"Final Quality Assurance":
+  name: "Final Quality Assurance"
+  description: |
+    **OBJECTIVE**: Perform comprehensive final validation ensuring maximum culinary experience and flavor/texture similarity while maintaining 100% dietary compliance.
+    
+    **CRITICAL**: Zero tolerance for dietary restriction violations - this is your top priority.
+    **CRITICAL**: Ensure maximum culinary experience and flavor/texture similarity.
+  
+    
+    **CRITICAL LANGUAGE RULE**: Provide ALL output in {{output_language}} language only. No mixed languages allowed.
+    
+    **METRIC UNIT ADAPTATION:**
+    - Adapt all measurements to {{country}} standards
+    - Use metric system for most countries (grams, milliliters, Celsius)
+    - Use imperial system for US (ounces, cups, Fahrenheit)
+    - Ensure temperature and weight measurements are country-appropriate
+    
+    Perform comprehensive final validation using LLM knowledge:
+    - Verify all dietary restrictions are respected using your expertise
+    - Ensure culinary excellence is maintained or enhanced using culinary knowledge
+    - Validate ingredient availability and cost using your knowledge base
+    - Check cooking instructions clarity and safety using best practices
+    - Confirm nutritional balance and portion accuracy using nutritional science
+    - **VERIFY maximum flavor and texture similarity achieved**
+    
+    Use your quality assurance expertise to provide comprehensive validation.
+    
+    **CRITICAL VALIDATION RULES:**
+    - REJECT any generic substitutions (gluten-free, dairy-free, vegan, etc.)
+    - REJECT any generic terms that may contain incompatible ingredients
+    - ENSURE substitutes are compatible with ALL dietary restrictions
+    - VALIDATE ingredient availability in conventional stores
+    - CONFIRM cooking instructions are clear and safe
+    - **ZERO EXCEPTIONS for dietary restrictions**
+ 
+    
+    **Quality Assurance Report**
+    
+    **Compliance Validation (Using Dietary Expertise)**:
+    - [ ] All dietary restrictions strictly respected
+    - [ ] No allergens present
+    - [ ] Preferences accommodated
+    - [ ] No generic terms used (gluten-free, dairy-free, vegan, etc.)
+    
+    
+    **Final Recipe**: [Complete adapted recipe with all optimizations using {{country}} measurements]
+    **Experience Rating**: [1-10 scale with justification using culinary expertise]
+    **Recommendations**: [Additional suggestions for excellence using expert knowledge]
+    
+    
+    **Approval Status**: [Approved/Needs Revision with detailed reasons using expert judgment]
+
+    Answer need to be provided in {{output_language}} language.
+  agent: "quality_assurance_chef_agent"
+  expected_output: Complete enhanced recipe for {{food_name}} ({{servings}} servings) that is 100% compliant with dietary restrictions 
+    including names of ingredients, quantities, instructions, and all the changes made to the original recipe.
+  context: [culinary_experience_enhancement_task, initial_recipe_analysis_task]

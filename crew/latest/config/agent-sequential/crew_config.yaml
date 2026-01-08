@@ -1,0 +1,201 @@
+# weCookio Multi-Agent System - Cost Optimized Main Orchestration File
+# This file orchestrates the entire CrewAI system for weCookio using cost-effective model selection
+# Model selection based on task complexity for optimal cost-performance balance
+# Maximizing culinary experience while strictly respecting dietary restrictions
+# Cost-optimized model selection based on task complexity
+
+# Import configurations
+imports:
+  integration_config: "config/integration_config.yaml"
+
+crew:
+  name: "weCookio Culinary Adaptation Crew - Cost Optimized"
+  description: "Specialized multi-agent system for adapting recipes to dietary restrictions while maximizing culinary experience using cost-effective model selection"
+
+
+# Agent definitions - references to LLM-optimized agent files
+agents: "agents/agents.yaml"
+
+# Task definitions - references to LLM-optimized task files
+tasks: "tasks/tasks.yaml"
+
+# Workflow definition optimized for cost and performance
+workflow:
+  name: "weCookio Recipe Adaptation Workflow - Cost Optimized"
+  description: "Sequential workflow for adapting recipes with maximum culinary excellence using cost-effective model selection"
+  
+  steps:
+    - step: 1
+      task: "Initial Recipe Analysis"
+      agent: "Culinary Coordinator"
+      dependencies: []
+      llm_focus: "Recipe complexity and requirement analysis using culinary expertise"
+      
+    - step: 2
+      task: "Dietary Compliance Validation"
+      agent: "Dietary Compliance Specialist"
+      dependencies: ["Initial Recipe Analysis"]
+      llm_focus: "Comprehensive dietary restriction validation using nutritional knowledge"
+      
+    - step: 3
+      task: "Ingredient Substitution Strategy"
+      agent: "Ingredient Substitution Expert"
+      dependencies: ["Dietary Compliance Validation"]
+      llm_focus: "Optimal ingredient substitution using culinary innovation expertise"
+      
+    - step: 4
+      task: "Culinary Experience Enhancement"
+      agent: "Culinary Experience Optimizer"
+      dependencies: ["Ingredient Substitution Strategy"]
+      llm_focus: "Culinary excellence optimization using gastronomic expertise"
+      
+    - step: 5
+      task: "Final Quality Assurance"
+      agent: "Quality Assurance Chef"
+      dependencies: ["Culinary Experience Enhancement"]
+      llm_focus: "Comprehensive quality validation using expert judgment"
+
+# Model assignment by agent complexity
+model_assignment:
+  # Agent-specific model selection
+  agent_model_mapping:
+    "Culinary Coordinator": "low_complexity"
+    "Ingredient Substitution Expert": "medium_complexity"
+    "Culinary Experience Optimizer": "low_complexity"
+    "Dietary Compliance Specialist": "ultra_low_complexity"
+    "Quality Assurance Chef": "low_complexity"
+  
+  # Task-specific model selection
+  task_model_mapping:
+    "Initial Recipe Analysis": "low_complexity"
+    "Ingredient Substitution Strategy": "medium_complexity"
+    "Culinary Experience Enhancement": "low_complexity"
+    "Dietary Compliance Validation": "ultra_low_complexity"
+    "Final Quality Assurance": "ultra_low_complexity"
+
+# Execution configuration optimized for cost and performance
+execution:
+  process: "Process.sequential"
+  max_iter: 3
+  verbose: true  
+  timeout_seconds: 300
+  retry_attempts: 2
+  cost_optimization: true
+
+# Memory configuration optimized per model complexity
+memory:
+  type: "conversation"
+  high_complexity: 4000
+  medium_complexity: 2000
+  low_complexity: 1500
+  ultra_low_complexity: 800
+
+# Input/output schema
+input_schema:
+  required_fields:
+    - comida
+    - comensales
+    - intolerancias
+    - exclusiones
+    - preferencias
+  
+  optional_fields:
+    - cooking_time
+    - difficulty_level
+    - budget_constraints
+    - equipment_available
+
+# Output format configuration
+output_schema:
+  type: "structured"
+  schema:
+    recipe_name: "string"
+    adapted_ingredients: "array"
+    cooking_instructions: "array"
+    dietary_compliance: "object"
+    culinary_enhancements: "object"
+    nutritional_info: "object"
+    quality_assurance: "object"
+    comparison_analysis: "object"
+
+# Cost and Performance Optimization with Amazon Nova Suite
+cost_optimization:
+  model_selection:
+    high_complexity: "amazon-nova-pro-v1:0"
+    medium_complexity: "amazon-nova-lite-v1:0"
+    low_complexity: "amazon-nova-micro-v1:0"
+    ultra_low_complexity: "amazon-nova-micro-v1:0"
+  
+  performance_monitoring:
+    track_cost_per_request: true
+    track_quality_by_model: true
+    track_response_times: true
+    track_user_satisfaction: true
+  
+  fallback_strategy:
+    primary_failure: "high_complexity"
+    high_complexity: "high_complexity"
+    medium_complexity: "high_complexity"
+    low_complexity: "medium_complexity"
+    ultra_low_complexity: "low_complexity"
+    max_fallback_attempts: 1
+
+# Performance Metrics for Nova Suite-Optimized System
+performance_metrics:
+  ultra_low_complexity: "< 5 seconds per task"
+  low_complexity: "< 10 seconds per task"
+  medium_complexity: "< 15 seconds per task"
+  high_complexity: "< 25 seconds per task"
+  accuracy_rate: "> 95% for dietary compliance"
+  user_satisfaction: "> 90% target"
+  system_reliability: "> 99% uptime"
+  cost_per_request: "< $0.015 average"
+  estimated_monthly_savings: "$1200-2500 for typical usage"
+  multimodal_capabilities: "Image and video analysis support" 
+
+# Quality metrics optimized for LLM capabilities
+quality_standards:
+  dietary_compliance: 1.0  # 100% compliance required
+  culinary_excellence: 0.9  # 90% minimum excellence
+  user_satisfaction: 0.8  # 80% minimum satisfaction
+  experience_enhancement: 1.2  # 20% improvement target
+  llm_confidence: 0.9  # Minimum LLM confidence threshold
+
+# Monitoring and feedback optimized for cost tracking
+monitoring:
+  track_quality_metrics: true
+  track_experience_ratings: true
+  track_compliance_violations: false  # Zero tolerance
+  track_user_satisfaction: true
+  continuous_improvement: true
+  
+  # Cost and performance tracking
+  cost_tracking:
+    track_cost_per_request: true
+    track_cost_by_model: true
+    track_cost_by_agent: true
+    track_cost_by_task: true
+  
+  performance_tracking:
+    track_response_time_by_model: true
+    track_quality_score_by_model: true
+    track_success_rate_by_model: true
+    track_user_satisfaction_by_model: true 
+
+# Example input and output
+example_input:
+  comida: "Lasaña de carne XXL al Pedro Ximenez"
+  comensales: 4
+  intolerancias: ["gluten", "lactosa", "arroz", "maiz", "ternera", "ajo"]
+  exclusiones: ["carne de pollo"]
+  preferencias: []
+
+example_output:
+  recipe_name: "Lasaña de Cerdo Sin Gluten"
+  adapted_ingredients: ["pasta de garbanzo", "tofu", "espinacas", "carne de cerdo"]
+  cooking_instructions: ["Paso 1: Preparar la pasta..."]
+  dietary_compliance: {"gluten_free": true, "lactosa_free": true, "arroz_free": true, "maiz_free": true, "ternera_free": true, "ajo_free": true}
+  culinary_enhancements: {"flavor_improvement": "25%", "texture_optimization": "excellent"}
+  nutritional_info: {"calories": 350, "protein": "15g"}
+  quality_assurance: {"overall_score": 9.2, "approval_status": "approved"}
+  comparison_analysis: {"original_vs_adapted": "detailed comparison"}
